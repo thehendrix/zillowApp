@@ -1,0 +1,20 @@
+{
+  "name": "myZillowApp",
+  "version": "1.0.0",
+  "description": "Simple web app that allows a user to enter an address for a home and then see details for that home.",
+  "dependencies": {
+    "express": "4.13.4"
+  },
+  "devDependencies": {
+    "nodeunit": "0.9.1",
+    "request": "2.72.0"
+  },
+  "main": "myZillowApp.js",
+  "repository": "Somewhere on GIThub",
+  "author": "Marc Hendrikse",
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {
+    "start": "node startZillowApp.js",
+    "test": "node test.js"
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="zillow">
+  <head>
+    <meta charset="utf-8">
+    <title>Zillow App - Marc Hendrikse</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  </head>
+  <body>
+    <div ng-controller="zillowCtrl">
+      <h1>Zillow App</h1>
+      <center>
+        <input id="textBox" type="text" ng-model="inputAddress" placeholder="Please enter an address"/>
+        <button id="searchBtn" type="button" class="btn btn-primary" ng-click="getListings()">Search</button>
+        <h2>Details On Your Search</h2>
+      </center>
+      <div class="container">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th style="width:600px;">Address</th>
+              <th>Price</th>
+              <th>Bedrooms</th>
+              <th>Baths</th>
+              <th>Acres</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="data in searchResults">
+              <td>{{data.address}}</td>
+              <td>{{data.price | currency}}</td>
+              <td>{{data.bedrooms}}</td>
+              <td>{{data.baths}}</td>
+              <td>{{data.acres}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h2>Other Homes In The Area</h2>
+      <div class="container">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th style="width:600px;">Address</th>
+              <th>Price</th>
+              <th>Bedrooms</th>
+              <th>Baths</th>
+              <th>Acres</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="data in otherResults">
+              <td>{{data.address}}</td>
+              <td>{{data.price | currency}}</td>
+              <td>{{data.bedrooms}}</td>
+              <td>{{data.baths}}</td>
+              <td>{{data.acres}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="errMsg" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color:#D3D3D3">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+              <h4 class="modal-title" id="mySmallModalLabel">Uh Oh</h4>
+            </div>
+            <div class="modal-body">
+              Looks like there was a problem with getting results.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="zillowApp.js"></script>
+  <link rel="stylesheet" href="zillowApp.css">
+</html>
